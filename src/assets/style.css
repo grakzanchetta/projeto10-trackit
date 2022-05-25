@@ -1,7 +1,19 @@
 * {
   box-sizing: border-box;
+  --cor-botao: #52B6FF;
+  --cor-app: #126BA5;
+  --cor-app-texto: #666666;
+  --cor-formulario-vazio: #DBDBDB;
+  --cor-formulario-preenchido: #AFAFAF;
+  --cor-sucesso: #8FC549;
+  --cor-fundo-app: #E5E5E5;
+  --cor-login-cadastro: #ffffff
+
+
 }
 
 body {
-  font-family: 'Lexend Deca', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Lexend Deca', sans-serif;
 }
