@@ -1,14 +1,15 @@
-import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
-
 import axios from "axios";
-export default function Login(){
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
-    const navigate = useNavigate();
+export default function Login(){
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+
+    const navigate = useNavigate();
+    const cadastroLogin = preencherLogin();
 
     function fazerLogin(event) {
         event.preventDefault();
@@ -26,8 +27,6 @@ export default function Login(){
         })
     }
 
-    const cadastroLogin = preencherLogin();
-
     function preencherLogin() {
         return (
             <>
@@ -40,7 +39,6 @@ export default function Login(){
     
     return (
         <>
-            <h1>Sou a tela de Login</h1>
             <Logar onSubmit={fazerLogin}>{cadastroLogin}</Logar>
             <Link to={`/cadastro`}>Não tem uma conta? Cadastre-se!</Link>
         </>
