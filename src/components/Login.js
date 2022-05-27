@@ -1,15 +1,18 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+
+import UserContext from "../contexts/UserContext";
 
 export default function Login(){
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
+    const { setUser } = useContext(UserContext);
+
     const navigate = useNavigate();
-    const cadastroLogin = preencherLogin();
 
     function fazerLogin(event) {
         event.preventDefault();
@@ -19,13 +22,15 @@ export default function Login(){
         });
 
         promise.then((resposta) => {
+            setUser(resposta.data);
+            console.log(resposta);
             navigate("/hoje");
         });
-        promise.catch((erro) => {
-            console.log(erro.resposta.statusText)
-        })
+        promise.catch((error) => console.log(error.resposta));
     }
 
+    const cadastroLogin = preencherLogin();
+    
     function preencherLogin() {
         return (
             <>

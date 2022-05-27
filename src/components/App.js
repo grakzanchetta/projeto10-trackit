@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { useState } from "react";
 
+import UserContext from "../contexts/UserContext";
 import Cadastro from "./Cadastro";
 import Habitos from "./Habitos";
 import Hoje from "./Hoje";
@@ -7,6 +9,8 @@ import Historico from "./Historico";
 import Login from "./Login";
 
 export default function App(){
+
+    const [user, setUser] = useState(null);
 
     return (
     <>
