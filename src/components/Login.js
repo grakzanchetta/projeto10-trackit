@@ -19,7 +19,6 @@ export default function Login(){
         });
 
         promise.then((resposta) => {
-            console.log(resposta.data)
             navigate("/hoje");
         });
         promise.catch((erro) => {

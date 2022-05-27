@@ -1,5 +1,8 @@
 export default function Topo(){
+
     return (
-        <h1>Sou o Topo</h1>
+        <>
+            <h1>Sou o Topo</h1>
+        </>    
     )
 }
