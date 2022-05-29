@@ -4,9 +4,9 @@ import styled from "styled-components";
 export default function Histórico(){
     return (
         <Container>
-            <Link to={`/habitos`}>Hábitos</Link>
-            <Link to={`/hoje`}>Hoje</Link>
-            <Link to={`/historico`} >Histórico</Link>
+            <NavLink to={`/habitos`}><h1>Hábitos</h1></NavLink>
+            <NavLink to={`/hoje`}>Hoje</NavLink>
+            <NavLink to={`/historico`}><h1>Histórico</h1></NavLink>
         </ Container>
     )
 }
@@ -20,6 +20,21 @@ const Container = styled.div`
     position: fixed;
     bottom: 0px;
     background-color: #ffffff;
+
+    h1{
+        font-size: 18px;
+        color:#52B6FF;
+    }
+
+`
+
+const NavLink = styled(Link)`
+  text-decoration: none;
+  
+  &:hover{
+    cursor:pointer;
+    filter: brightness(130%);
+}
 `
 
 

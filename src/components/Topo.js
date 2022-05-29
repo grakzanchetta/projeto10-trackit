@@ -32,6 +32,7 @@ const Container = styled.div`
     width: 100vw;
     height: 70px;
     background-color: var(--cor-app);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     display: flex;
     justify-content: space-between;
     align-items: center;
