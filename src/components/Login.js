@@ -26,7 +26,7 @@ export default function Login(){
             console.log(resposta);
             navigate("/hoje");
         });
-        promise.catch((error) => console.log(error.resposta));
+        promise.catch(alert("O Login não pode ser realizado. Tente novamente."));
     }
 
     const cadastroLogin = preencherLogin();
@@ -50,4 +50,5 @@ export default function Login(){
 }
 
 const Logar = styled.form`
+
 `

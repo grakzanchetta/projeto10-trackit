@@ -7,13 +7,11 @@
   --cor-formulario-preenchido: #AFAFAF;
   --cor-sucesso: #8FC549;
   --cor-fundo-app: #E5E5E5;
-  --cor-login-cadastro: #ffffff
-
-
+  --cor-login-cadastro: #ffffff;
 }
 
 body {
     width: 100vw;
     height: 100vh;
-    font-family: 'Lexend Deca', sans-serif;
+    font-family: 'Lexend Deca', sans-serif;        
 }

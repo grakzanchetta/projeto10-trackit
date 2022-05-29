@@ -26,9 +26,7 @@ export default function Cadastro() {
             console.log(resposta.data)
             navigate("/");
         });
-        promise.catch((erro) => {
-            console.log(erro.resposta.statusText)
-        })
+        promise.catch(alert("O Cadastro não pode ser realizado. Tente novamente."));
     }
 
     function preencherCadastro() {
