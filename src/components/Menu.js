@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Histórico(){
+export default function Menu(){
+
     return (
         <Container>
             <NavLink to={`/habitos`}><h1>Hábitos</h1></NavLink>
@@ -30,10 +31,6 @@ const Container = styled.div`
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  
-  &:hover{
-    cursor:pointer;
-    filter: brightness(130%);
 }
 `
 

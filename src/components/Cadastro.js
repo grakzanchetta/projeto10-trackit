@@ -26,6 +26,7 @@ export default function Cadastro() {
             navigate("/");
         });
         promise.catch((resposta) => {
+            setCarregando(false);
             alert("O Cadastro não pode ser realizado. Tente novamente.")
         });
     }

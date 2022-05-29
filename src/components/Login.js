@@ -17,8 +17,6 @@ export default function Login(){
     password: ''
   });
 
-
-
     function fazerLogin(event) {
         event.preventDefault();
         setCarregando(true);

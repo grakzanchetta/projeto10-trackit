@@ -5,12 +5,12 @@ import Topo from "./Topo";
 export default function Historico(){
     return (
     <>
-        <Topo></Topo>
+        <Topo/>
         <Container>
         <h1>Histórico</h1>
         <h2>Em breve você poderá ver o histórico dos seus hábitos aqui!</h2>
         </Container>
-        <Menu></Menu>
+        <Menu/>
     </>
     )
 }

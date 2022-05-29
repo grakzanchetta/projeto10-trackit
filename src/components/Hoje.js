@@ -7,11 +7,11 @@ export default function Habitos(){
     
     return (
     <>
-        <Topo></Topo>
+        <Topo/>
             <Container>
                 <h1>Sou a tela de Hoje</h1>
             </Container>
-        <Menu></Menu>
+        <Menu/>
     </>
     )
 }
