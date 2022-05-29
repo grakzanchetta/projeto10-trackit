@@ -1,16 +1,19 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
-import { TailSpin } from 'react-loader-spinner'
+import { ThreeDots } from "react-loader-spinner";
 
 import Menu from "./Menu";
 import Topo from "./Topo";
 import UserContext from "../contexts/UserContext";
+import ListaHabitos from "./ListaHabitos";
+import AdicionarHabito from "./AdicionarHabito";
 
 export default function Habitos(){
 
     const [habitos, setHabitos] = useState([])
     const { user } = useContext(UserContext);
+    const [carregando, setCarregando] = useState(true)
     
     const config = {
         headers: {
@@ -19,54 +22,91 @@ export default function Habitos(){
     }
 
     useEffect(() => {
-        const promise = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config);
-        promise.then((resposta) =>{
-        setHabitos(resposta.data)
-        });
+
+        atualiza()
     }, [])
-    
-
-    function renderizarHabitos (){
-        console.log(habitos[2].name)
-        return(
-            <h1>{habitos[0].name}</h1>
-        )
-        
+    function atualiza() {
+        const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', config)
+        promise.then(function (resposta) {
+            setHabitos(resposta.data)
+            setCarregando(false)
+        })
     }
-
-
-    const habitosRenderizados = renderizarHabitos();
+    
+    function Render({ habitos, load }) {
+        const [habito, setHabito] = useState([])
+        const [display, setDisplay ]= useState("none")
+        
+        function mais() {
+            setDisplay("flex")
+    
+        }
+        return (
+            <Container>
+                {load ? <Main><ThreeDots color="#00BFFF" height={50} width={50} /></Main> :<Main>
+                    <h1>
+                        Meus hábitos <Mais onClick={mais}>+</Mais>
+                    </h1>
+                    <Adicionar display={display}><AdicionarHabito setHabito={setHabito} atualiza={atualiza} setDisplay={setDisplay}/></Adicionar>
+                    {habito}
+                    {habitos.map((e, index) => <ListaHabitos key={index} name={e.name} days={e.days} id={e.id}  />)}
+                    {habitos.length > 0 ? "" :
+                        <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>}
+                </Main>}
+            </Container>
+        )
+    }
 
     return (
     <>
         <Topo/>
-        <Container>
-            {habitosRenderizados}
-        </Container>
+            <Render habitos={habitos} atualiza={atualiza} load={carregando}/>
         <Menu/>
     </>
     )
 }
 
-/* 
-   <Container>
-            <TopBar />
-            {load ? <Main><TailSpin color="#00BFFF" height={80} width={80} /></Main> :<Main>
-                <h1>
-                    Meus hábitos <Mais onClick={mais}>+</Mais>
-                </h1>
-                <Adicionar display={display}><AddHabito setHabito={setHabito} atualiza={atualiza} setDisplay={setDisplay}/></Adicionar>
-                {habito}
-                {habitos.map((e, index) => <ListaHabitos key={index} name={e.name} days={e.days} id={e.id} atualiza={atualiza} />)}
-                {habitos.length > 0 ? "Abuble" :
-                    <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>}
-            </Main>}
-            <Footer />
-        </Container>*/
-
 const Container = styled.div`
     width: 100vw;
     height: 100vh;
     background-color: var(--cor-fundo-app);
-    padding-top: 70px;
+    overflow-y: auto;
+`
+const Main = styled.div`
+    padding-top:110px;    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 110px;
+
+    h1{
+        font-size: 23px;
+        color: var(--cor-app);
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        width: 95%;
+        max-width: 340px;
+    }
+    
+    p{
+        font-size: 18px;
+        color:#666666;
+        line-height: 22px;
+        max-width: 340px;
+    }
+`
+const Mais = styled.button`
+        height: 35px;
+        width: 40px;
+        border:none;
+        border-radius: 5px;
+        font-weight: 700;
+        color:#fff;
+        background-color:#52B6FF ;
+        font-size: 27px; 
+`
+const Adicionar = styled.div`
+width: 340px;
+display: ${props => props.display};
 `
