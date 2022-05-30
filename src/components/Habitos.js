@@ -39,8 +39,8 @@ export default function Habitos(){
         
         function mais() {
             setDisplay("flex")
-    
         }
+        
         return (
             <Container>
                 {load ? <Main><ThreeDots color="#00BFFF" height={50} width={50} /></Main> :<Main>

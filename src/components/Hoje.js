@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import styled from "styled-components";
 import axios from "axios";
 import dayjs from 'dayjs'
@@ -13,6 +14,7 @@ dayjs.locale('pt-br')
 
 export default function Habitos(){
 
+    const [carregando, setCarregando] = useState(true)
     const [hoje, setHoje] = useState([])
     
     const {diario, setDiario} = useContext(DiarioContext)
@@ -34,7 +36,7 @@ export default function Habitos(){
         const promise = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', config)
         promise.then(function(resposta){
             setHoje(resposta.data)
-            
+            setCarregando(false)
         }) 
     }
 
@@ -50,15 +52,15 @@ export default function Habitos(){
         setDiario(feitos/total*100)
     }
 
-
     return (
     <>
         <Topo/>
             <Container>
+            {carregando ? <Main><ThreeDots color="#00BFFF" height={50} width={50} /></Main> :<Main>
             <h1>{semana[now.$W]}, {now.$D}/{now.$M < 10 ? `0${now.$M }` : `${now.$M }`}</h1>
             {diario === 0 ? <h2>Nenhum habito concluido ainda</h2> : <h3>{diario.toFixed()}% dos habitos concluidos</h3>}
             { hoje.map((e,index) => <ListaHoje key={index} dados={e} config={config} atualizaHoje={atualizaHoje} progresso={progresso}/>)}
-
+            </Main>}
             </Container>
         <Menu/>
     </>
@@ -96,4 +98,6 @@ const Container = styled.div`
         margin-top: 5px;
     }
 `
-
+const Main = styled.div`
+   
+`

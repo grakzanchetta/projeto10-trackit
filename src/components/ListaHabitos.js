@@ -2,12 +2,15 @@ import axios from "axios"
 import UserContext from "../contexts/UserContext";
 import { useContext, useState } from "react"
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 import Lixeira from '../assets/Vector.jpg'
+
 
 export default function ListaHabitos({name,days, id}) {
     const dias = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
     const{user} = useContext(UserContext);
+    const navigate = useNavigate();
 
     function RenderCheck(e,index){
         const [cor] = useState(false)
@@ -34,6 +37,9 @@ export default function ListaHabitos({name,days, id}) {
             
             const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,config) 
             promise.then(function(resposta) {
+                
+                navigate("/hoje");
+                navigate("/habitos");
             })
         }
        
