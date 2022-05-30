@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 import Lixeira from '../assets/Vector.jpg'
 
-
 export default function ListaHabitos({name,days, id}) {
     const dias = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S']
     const{user} = useContext(UserContext);
