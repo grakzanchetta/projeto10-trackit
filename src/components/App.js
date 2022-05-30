@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { useState } from "react";
 
 import UserContext from "../contexts/UserContext";
+import DiarioContext from "../contexts/DiarioContext";
 import Cadastro from "./Cadastro";
 import Habitos from "./Habitos";
 import Hoje from "./Hoje";
@@ -11,10 +12,12 @@ import Login from "./Login";
 export default function App(){
 
     const [user, setUser] = useState(null);
+    const [diario, setDiario] = useState(0)
 
     return (
     <>
         <UserContext.Provider value={{ user, setUser }}>
+        <DiarioContext.Provider value={{ diario, setDiario }}>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Login /> } />
@@ -23,7 +26,8 @@ export default function App(){
                     <Route path="/hoje" element={<Hoje />} />
                     <Route path="/historico" element={<Historico />} />
                 </Routes>
-            </BrowserRouter>
+            </BrowserRouter> 
+        </DiarioContext.Provider>   
         </UserContext.Provider>
     </>
     )

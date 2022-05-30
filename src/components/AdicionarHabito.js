@@ -57,9 +57,9 @@ export default function AdicionarHabito({ setHabito ,atualiza,setDisplay}) {
             alert("Habito não pode ser incluso. Tente novamente.")
         })  
     }
-    function none(){
-
-    }
+    
+    function none(){}
+    
     return (
         <Container>
             <input
@@ -76,7 +76,6 @@ export default function AdicionarHabito({ setHabito ,atualiza,setDisplay}) {
                 <Cancelar onClick={cancelar}>Cancelar</Cancelar>
                 <Salvar onClick={carregando ? none: salvar}>{carregando ? <ThreeDots color="#FFFFFF" height={50} width={50} /> : <>Salvar</>}</Salvar>
             </Finalizar>
-
         </Container>
     )
 }
@@ -104,15 +103,10 @@ const Container = styled.div`
         margin-bottom: 6px;
         font-size: 20px;
         padding: 5px;
-        
-    &::placeholder{
-        color:#DBDBDB;
-    }
     }
 `
 const Dias = styled.div`
     display: flex;
-    cursor: pointer;
     max-width: 340px;    
 `
 const Check = styled.div`
@@ -151,5 +145,4 @@ const Finalizar = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-
 `

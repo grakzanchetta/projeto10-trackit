@@ -77,7 +77,7 @@ const Main = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: 110px;
+    padding-bottom: 90px;
 
     h1{
         font-size: 23px;
