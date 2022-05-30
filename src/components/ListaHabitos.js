@@ -37,12 +37,10 @@ export default function ListaHabitos({name,days, id}) {
             
             const promise = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,config) 
             promise.then(function(resposta) {
-                
-                navigate("/hoje");
+                navigate("/historico");
                 navigate("/habitos");
             })
         }
-       
     }
     return (
         <>
