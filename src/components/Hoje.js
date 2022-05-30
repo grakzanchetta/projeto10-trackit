@@ -57,7 +57,7 @@ export default function Habitos(){
         <Topo/>
             <Container>
             {carregando ? <Main><ThreeDots color="#00BFFF" height={50} width={50} /></Main> :<Main>
-            <h1>{semana[now.$W]}, {now.$D}/{now.$M < 10 ? `0${now.$M }` : `${now.$M }`}</h1>
+            <h1>{semana[now.$W]}, {now.$D}/{now.$M < 10 ? `0${now.$M + 1}` : `${now.$M }`}</h1>
             {diario === 0 ? <h2>Nenhum habito concluido ainda</h2> : <h3>{diario.toFixed()}% dos habitos concluidos</h3>}
             { hoje.map((e,index) => <ListaHoje key={index} dados={e} config={config} atualizaHoje={atualizaHoje} progresso={progresso}/>)}
             </Main>}
